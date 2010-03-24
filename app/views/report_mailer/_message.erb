@@ -1,0 +1,11 @@
+<%= team.name %>
+  
+<% if team.has_message_for_this_week? %>
+  What was done on week <%= Date.today.cweek - 1 %>:
+  <%= team.messages.last.completed_last_week %>
+
+  Plan for week <%= Date.today.cweek %>:
+  <%= team.messages.last.will_complete_this_week %>
+<% else %>
+  The team has not reported anything. :(
+<% end %>

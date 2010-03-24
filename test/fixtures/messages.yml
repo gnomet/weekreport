@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  team_id: 1
+  is_sent: 1
+  completed_last_week: MyText
+  will_complete_this_week: MyText
+
+two:
+  team_id: 1
+  is_sent: 1
+  completed_last_week: MyText
+  will_complete_this_week: MyText

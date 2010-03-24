@@ -1,0 +1,10 @@
+#!/bin/sh
+
+/var/datat/weekreport/current/script/process/spawner \
+  "mongrel --path=/weekreport" \
+  --environment=production \
+  --instances=1 \
+  --address=127.0.0.1 \
+  --port=11000
+
+  

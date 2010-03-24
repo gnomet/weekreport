@@ -1,0 +1,9 @@
+OtaSizzle weekly report, week <%= Date.today.cweek %>.
+
+Team reports:
+
+***
+
+<%= render :partial => "report_mailer/message", :collection => Team.all, :as => :team, :spacer_template => "layouts/spacer" %>
+
+***

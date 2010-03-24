@@ -1,0 +1,36 @@
+<% completed_week = (DateTime.now.hour < 13 && Date.today.wday == "1") ? "last week" : "this week" %>
+<% will_complete_week = (DateTime.now.hour < 13 && Date.today.wday == "1") ? "this week" : "next week" %>
+
+<h1>OtaSizzle weekly report</h1>
+
+<p>
+Please explain with 1-2 sentences what your team has accomplished in OtaSizzle project <%= completed_week %> and what is your roadmap for <%= will_complete_week %>. Both fields accept max. 500 characters. If you want to share more material, please provide a link.
+</p>
+
+<p>  
+Reports are sent to OtaSizzle staff automatically every Monday at 2PM. If you want to edit your report before that, just send a new report and it will replace the old one.
+</p>
+
+<% method = @message.new_record? ? "put" : "post" %>
+<% form_for(@message, :method => method) do |f| %>
+  <%= f.error_messages %>
+  <% selected = params[:message] ? params[:message][:team_id] : params[:team] %>
+  <p>
+    <%= f.label "Team" %><br />
+    <%= select("message", "team_id", Team.hash_for_dropdown, { :include_blank => "Select team", :selected => selected }, 
+               {:onchange => "#{remote_function(:url => { :action => "new" },
+                                                :with => "'team='+value",
+                                                :update => "form_div") }" }) %>
+  </p>
+  <p>
+    <%= "What was accomplished " + completed_week %><br />
+    <%= f.text_area :completed_last_week %>
+  </p>
+  <p>
+    <%= "What will be accomplished " + will_complete_week %><br />
+    <%= f.text_area :will_complete_this_week %>
+  </p>
+  <p>
+    <%= f.submit 'Send report' %>
+  </p>
+<% end %>

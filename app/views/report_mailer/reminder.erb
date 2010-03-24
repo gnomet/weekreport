@@ -1,0 +1,9 @@
+Hi <%= @team.contact_person %>!
+
+You have not yet reported the achievements and plans of your team <%= @team.name %>. Please do so at
+
+<%= "#{REPORTER_URL}?team=#{@team.id.to_s}" %>
+
+Remember to submit your report before Monday 2PM!
+
+ - OtaSizzle weekly reporter

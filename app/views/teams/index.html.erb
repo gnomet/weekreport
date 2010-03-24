@@ -1,0 +1,20 @@
+<h1>Teams</h1>
+
+<table cellpadding="5" cellspacing="0">
+  <tr>
+    <th>Name</th>
+    <th>Contact person</th>
+  </tr>
+
+<% @teams.each do |team| %>
+  <tr>
+    <td><%=h team.name %></td>
+    <td><%=h team.contact_person %></td>
+    <td><%= link_to 'Edit', edit_team_path(team) %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New team', new_team_path %>

@@ -1,0 +1,29 @@
+<h1>Listing messages</h1>
+
+<table>
+  <tr>
+    <th>Team</th>
+    <th>Is sent</th>
+    <th>Completed last week</th>
+    <th>Will complete this week</th>
+  </tr>
+
+<% @messages.each do |message| %>
+  <tr>
+    <td><%=h message.team_id %></td>
+    <td><%=h message.is_sent %></td>
+    <td><%=h message.completed_last_week %></td>
+    <td><%=h message.will_complete_this_week %></td>
+    <td><%= link_to 'Show', message %></td>
+    <td><%= link_to 'Edit', edit_message_path(message) %></td>
+    <td><%= link_to 'Destroy', message, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+
+<h2>Weekly report </h2>
+
+***
+<%= render :partial => "report_mailer/message", :collection => Team.all, :as => :team, :spacer_template => "layouts/spacer" %>
+***
