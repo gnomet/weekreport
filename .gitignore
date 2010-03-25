@@ -1,0 +1,5 @@
+.DS_Stroe
+log/*.log
+tmp/**/*
+config/database.yml
+db/*.sqlite3
